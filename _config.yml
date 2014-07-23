@@ -1,6 +1,6 @@
 # General Jekyll Config
 highlighter: pygments
-url: http://example.com
+baseurl: http://rcmachado.github.io
 lsi: false
 exclude: [LICENSE, CNAME, README.md, .gitignore]
 markdown: kramdown
