@@ -6,7 +6,7 @@ categories:
 - memcache
 ---
 
-Setting up an memcached session backend for PHP could be more tricky than it
+Setting up a memcached session backend for PHP could be more tricky than it
 sounds.
 
 ---
