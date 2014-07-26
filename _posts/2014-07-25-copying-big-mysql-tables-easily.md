@@ -6,7 +6,7 @@ categories:
 ---
 
 TL;DR: There is a script to automate these steps at
-https://gist.github.com/rcmachado/ef5d57a1718f1feb0858 (but read this
+[https://gist.github.com/rcmachado/ef5d57a1718f1feb0858][script] (but read this
 is still recommened)
 
 ---
@@ -138,7 +138,7 @@ and convert it again to binary again.
 
 ## But as we're all lazy
 
-I've made a small shell script to automate the [export/import tables][]
+I've made a small shell script to automate the [export/import tables][script]
 process. As with any script you'll use, read it carefully and see if
 it's doing what you need. Use it at your own risk (but I used it
 myself ;)).
@@ -148,4 +148,4 @@ myself ;)).
 [Percona]: http://www.percona.com/
 [xtrabackup]: http://www.percona.com/software/percona-xtrabackup
 [XtraDB]: http://www.percona.com/software/percona-xtradb
-[export/import tables]: https://gist.github.com/rcmachado/ef5d57a1718f1feb0858
+[script]: https://gist.github.com/rcmachado/ef5d57a1718f1feb0858
