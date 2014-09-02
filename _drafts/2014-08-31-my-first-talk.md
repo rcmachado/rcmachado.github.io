@@ -17,8 +17,8 @@ Johansen and Talita Pagani) in the Bauru city to bring high quality
 front end content (JavaScript, CSS, etc) to regions far from the
 capital. The first edition was in 2012, also in Bauru. This year, near
 150 people showed up from various nearby cities to watch and learn from
-very smart people like [MENINA DO SENCHA], [Davidson] and [Almir] - and
-a lot more!
+very smart people like [Loiane Groner][loiane],
+[Davidson Fellipe][davidson] and [Almir Filho][almir].
 
 Because one of the speakers cancelled his participation less than a
 week from the event, Richard asked me to give a talk. At that time, I
@@ -92,9 +92,17 @@ events - normally they're composed by people from your community
 (sometimes you even known some of them personally) and it's much easier
 to have help, specially if it is your first talk.
 
+## Special thanks
 
+Special thanks to Richard Johansen for inviting me and to Talita Pagani
+to accept the talk. I own you both a beer (or a juice) :)
+
+
+[loiane]: http://loiane.com/
+[davidson]: http://fellipe.com/about/
+[almir]: https://twitter.com/almirfilho
 [FrontInterior]: http://www.frontinterior.com.br
 [talk_git]: https://speakerdeck.com/rcmachado/git-com-o-pe-direito
-[talk_grunt]:
-[talk_webcomponents]:
+[talk_grunt]: https://speakerdeck.com/fellipe/workflow-para-desenvolvimento-mobile-usando-gruntjs
+[talk_webcomponents]: https://speakerdeck.com/obetomuniz/web-components-a-proxima-revolucao-do-desenvolvimento-web
 [WeDemand]: http://www.wedemand.com
