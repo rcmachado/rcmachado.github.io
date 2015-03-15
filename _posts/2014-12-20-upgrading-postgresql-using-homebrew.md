@@ -35,7 +35,7 @@ You will need to remove the new installation (your new version could be
 different) and link to the old one:
 
     brew unlink postgres
-    rm -rf /usr/local/Cellar/postgres/9.4.0
+    rm -rf /usr/local/Cellar/postgresql/9.4.0
 
 If you uses Postgis, take a look at the end of the post.
 
@@ -66,7 +66,7 @@ Let's use `pg_upgrade` to copy the old files with the correct data
 format (adjust your postgres versions):
 
     cd /usr/local
-    ./Cellar/postgres/9.4.0/bin/pg_upgrade -d var/postgres.old -D var/postgres -b Cellar/postgresql/9.3.5_1/bin -B Cellar/postgresql/9.4.0/bin
+    ./Cellar/postgresql/9.4.0/bin/pg_upgrade -d var/postgres.old -D var/postgres -b Cellar/postgresql/9.3.5_1/bin -B Cellar/postgresql/9.4.0/bin
 
 Don't forget to adjust the paths to correct versions!
 
