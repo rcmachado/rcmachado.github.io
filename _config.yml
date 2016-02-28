@@ -11,7 +11,13 @@ kramdown:
   syntax_highlighter: rouge
   hard_wrap: false
 
+# Default GitHub config
+lsi: false
+# safe: true
+incremental: false
 highlighter: rouge
+gist:
+  noscript: false
 
 paginate: 20
 baseurl: /
