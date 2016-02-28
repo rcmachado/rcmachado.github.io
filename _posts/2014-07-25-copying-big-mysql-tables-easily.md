@@ -7,8 +7,8 @@ categories:
 ---
 
 TL;DR: There is a script to automate these steps at
-[https://gist.github.com/rcmachado/ef5d57a1718f1feb0858][script] (but read this
-is still recommened)
+[https://gist.github.com/rcmachado/ef5d57a1718f1feb0858][script]
+(but read this is still recommened)
 
 ---
 
@@ -139,10 +139,10 @@ and convert it again to binary again.
 
 ## But as we're all lazy
 
-I've made a small shell script to automate the [export/import tables][script]
-process. As with any script you'll use, read it carefully and see if
-it's doing what you need. Use it at your own risk (but I used it
-myself ;)).
+I've made a small shell script to automate the
+[export/import tables][script] process. As with any script you'll use,
+read it carefully and see if it's doing what you need. Use it at your
+own risk (but I used it myself ;)).
 
 
 [LVM]: http://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)
