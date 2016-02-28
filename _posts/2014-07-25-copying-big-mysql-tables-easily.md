@@ -19,20 +19,20 @@ an updated copy of your production database on your staging environment.
 The most obvious choice would use `mysqldump`. Probably something like
 this:
 
-{% highlight bash %}
-$ mysqldump --single-transaction db_prod | gzip -9 > db_prod.sql.gz
-$ # (copy the file to staging machine)
-$ gunzip -c db_prod.sql.gz | mysql db_staging
-{% endhighlight %}
+```bash
+mysqldump --single-transaction db_prod | gzip -9 > db_prod.sql.gz
+# (copy the file to staging machine)
+gunzip -c db_prod.sql.gz | mysql db_staging
+```
 
 Or if you are restoring to the same server you can skip the gzip part
 (let's assume everybody knows that its a bad idea™ to use staging and
 production on the same machine and leave this here only for teaching
 purposes):
 
-{% highlight bash %}
-$ mysqldump --single-transaction db_prod | mysql db_staging
-{% endhighlight %}
+```bash
+mysqldump --single-transaction db_prod | mysql db_staging
+```
 
 After some minutes (hours?) staging database will be an consistent copy
 of production.
@@ -69,24 +69,24 @@ text and import it again (this was, basically, what we did with the
 `mysqldump | mysql` commands before).
 
 But there is some requirements: this only works for InnoDB tables, you
-need to have enabled the option innodb_file_per_table and your MySQL
+need to have enabled the option `innodb_file_per_table` and your MySQL
 version should be at least 5.6.
 
 ## Hands on!
 
 To start, let's make a full backup of our data. We're interested only
-in tables in the database db_prod:
+in tables in the database _db_prod_:
 
-{% highlight bash %}
-$ xtrabackup --backup --tables="^db_prod[.].*" --target-dir=/tmp/our-backup
-{% endhighlight %}
+```bash
+xtrabackup --backup --tables="^db_prod[.].*" --target-dir=/tmp/our-backup
+```
 
 After that, we need to "prepare" this backup to be restored as .ibd
 files:
 
-{% highlight bash %}
-$ xtrabackup --prepare --export --target-dir=/tmp/our-backup
-{% endhighlight %}
+```bash
+xtrabackup --prepare --export --target-dir=/tmp/our-backup
+```
 
 After this step, we'll have 4 files for each table: the .frm (that
 contains information about the table structure), *.exp (for their of
@@ -97,24 +97,24 @@ db_staging) have **exactly the same structure** that the ones you're
 importing from db_prod. The best way to archive this is to simply copy
 over the structure from db_prod:
 
-{% highlight bash %}
-$ mysqldump -d db_prod | mysql db_staging
-{% endhighlight %}
+```bash
+mysqldump -d db_prod | mysql db_staging
+```
 
 Before copying the exported data files to db_staging, we need to
 discard the tables tablespaces. For each table you want to restore, do:
 
-{% highlight sql %}
-mysql> ALTER TABLE db_staging.mytable DISCARD TABLESPACE;
-{% endhighlight %}
+```sql
+ALTER TABLE db_staging.mytable DISCARD TABLESPACE;
+```
 
 Copy the corresponding .idb and .exp/.cfg files (in our case,
 mytable.ibd and mytable.exp/mytable.cfg) to the database directory
 inside the MySQL datadir (let's assume our datadir is /var/lib/mysql):
 
-{% highlight bash %}
-$ sudo rsync -a /tmp/our-backup/mytable.{ibd,exp,cfg} /var/lib/mysql
-{% endhighlight %}
+```bash
+sudo rsync -a /tmp/our-backup/mytable.{ibd,exp,cfg} /var/lib/mysql
+```
 
 Note: we used `rsync -a` to preserve permissions. If you use `cp` or
 `mv`, remember to fix the file permissions or you'll get an error when
@@ -124,9 +124,9 @@ After copying the files (and fixed the permissions, if necessary), we
 can import the tablespaces again (this will make MySQL use our recently
 copied idb files):
 
-{% highlight sql %}
-mysql> ALTER TABLE db_staging.mytable IMPORT TABLESPACE;
-{% endhighlight %}
+```sql
+ALTER TABLE db_staging.mytable IMPORT TABLESPACE;
+```
 
 ## Voilà
 

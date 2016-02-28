@@ -5,6 +5,12 @@ meta_description: "Blog about web development and related stuff"
 aboutPage: true
 
 markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
 highlighter: rouge
 
 paginate: 20

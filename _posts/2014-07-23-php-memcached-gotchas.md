@@ -22,11 +22,11 @@ backend][search_memcached_php_session], but just to recap:
 1. Make sure you have memcached installed and running (a little obvious, but who knows?)
 2. Change the following directives on your PHP ini:
 
-{% highlight ini %}
+```ini
 ; use 'memcache' if you choosed the memcache extension
 session.save_handler = 'memcached'
 session.save_path = '127.0.0.1:11211?persistent=1&timeout=2'
-{% endhighlight %}
+```
 
 This should be enought. But what if we want to customize more parameters?
 
@@ -35,18 +35,18 @@ This should be enought. But what if we want to customize more parameters?
 Supose we want our session to last a little longer - let's say, for a week. The first
 thing is to configure the session cookie to not expire when user closes the browser:
 
-{% highlight ini %}
+```ini
 ; set session cookie lifetime to 1 day
 session.cookie_lifetime = 86400
-{% endhighlight %}
+```
 
 But memcached will expire our sessions before that if we don't also change the
 [session.gc_maxlifetime][] setting:
 
-{% highlight ini %}
+```ini
 ; consider session as garbage after 1 day
 session.gc_maxlifetime = 86400
-{% endhighlight %}
+```
 
 With these two settings, we extended our session duration to 1 day. Obviously, our session
 keys can expire before one day. If this is happening, try to allocate more memory to your
@@ -59,10 +59,10 @@ Everything is fine now, but what if we want longer sessions?
 Lets assume that we want to keep the session approximately for 2 months. Doing the math,
 this corresponds to ~5184000 seconds (60 * 60 * 24 * 30 * 2). We change our settings againg:
 
-{% highlight ini %}
+```ini
 session.cookie_lifetime = 5184000
 session.gc_maxlifetime = 5184000
-{% endhighlight %}
+```
 
 The expected result is to keep the sessions for 2 months, but this is not what happened.
 Mysteriously, our session data disapeared for memcached server. How is that possible?
@@ -73,15 +73,15 @@ The gotcha - a.k.a. the feature that brings more problems than help - is that me
 server is considering that expire time as an absolute timestamp instead of an offset from
 current time. [Its by the design][memcached-protocol-79]:
 
-    Some commands involve a client sending some kind of expiration time
-    (relative to an item or to an operation requested by the client) to
-    the server. In all such cases, the actual value sent may either be
-    Unix time (number of seconds since January 1, 1970, as a 32-bit
-    value), or a number of seconds starting from current time. In the
-    latter case, this number of seconds may not exceed 60*60*24*30 (number
-    of seconds in 30 days); if the number sent by a client is larger than
-    that, the server will consider it to be real Unix time value rather
-    than an offset from current time.
+> Some commands involve a client sending some kind of expiration time
+> (relative to an item or to an operation requested by the client) to
+> the server. In all such cases, the actual value sent may either be
+> Unix time (number of seconds since January 1, 1970, as a 32-bit
+> value), or a number of seconds starting from current time. In the
+> latter case, this number of seconds may not exceed 60*60*24*30 (number
+> of seconds in 30 days); if the number sent by a client is larger than
+> that, the server will consider it to be real Unix time value rather
+> than an offset from current time.
 
 ## Don't do that
 
@@ -101,12 +101,12 @@ whatever reason. If is that the case, there is a simple workaround that you coul
 of setting session configuration on ini file, you could change them using the [ini_set][]
 function, forcing a timestamp instead of an offset from current time:
 
-{% highlight php %}
+```php
 <?php
 $now = time();
 ini_set('session.cookie_lifetime' $now + 5184000);
 ini_set('session.gc_maxlifetime', $now + 5184000);
-{% endhighlight %}
+```
 
 But as I said before: reconsider you use of sessions: maybe you are just trying to put the data
 in the wrong place.
