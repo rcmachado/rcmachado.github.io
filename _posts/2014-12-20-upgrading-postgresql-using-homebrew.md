@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Upgrading PostgreSQL using Homebrew
+permalink: /:categories/:year/:month/:day/:title.html
 categories:
 - postgres
 - postgis

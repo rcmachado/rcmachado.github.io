@@ -1,6 +1,7 @@
 ---
 layout: post
 title: PHP & Memcached Gotchas
+permalink: /:categories/:year/:month/:day/:title.html
 categories:
 - php
 - memcache

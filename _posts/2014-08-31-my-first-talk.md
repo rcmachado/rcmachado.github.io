@@ -1,5 +1,6 @@
 ---
 title: My First Talk
+permalink: /:categories/:year/:month/:day/:title.html
 layout: post
 categories: events talks
 ---

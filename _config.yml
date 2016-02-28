@@ -1,35 +1,44 @@
-# General Jekyll Config
-highlighter: pygments
-baseurl: http://rcmachado.github.io
-lsi: false
-exclude: [LICENSE, CNAME, README.md, .gitignore]
+name: Rodrigo Machado Blog
+description: Random thoughts of a random web developer
+meta_description: "Blog about web development and related stuff"
+
+aboutPage: true
+
 markdown: kramdown
+highlighter: rouge
 
-# Theme customization - please change from the defaults!
-theme:
-  # Color for top bar, links, etc
-  highlight_color: '#2a9520'
+paginate: 20
+baseurl: /
+domain_name: 'http://machado.io'
+google_analytics: 'UA-10254127-3'
+disqus: false
+disqus_shortname: 'your-disqus-shortname'
 
-  # Profile links on the left sidebar, leave blank to ignore
-  social:
-    github: rcmachado
-    bitbucket: rcmachado
-    #hacker_news: swanson
-    #stackexchange: 348619
-    #stackoverflow: 348619
-    twitter: rcmachado
-    #facebook: zuck
-    #tumblr: animalygifs
-    linkedin: rcmachado
-    #gplus: 110552447039675960964
+# Details for the RSS feed generator
+url:            'http://machado.io'
+author:         'Rodrigo Machado'
+authorTwitter:  'rcmachado'
 
-  # "Hi, I'm _______"
-  name: Rodrigo Machado
-  email: rcmachado@gmail.com
-  tagline: "Just another programmer"
+permalink:       /:year/:title/
 
-  # Google Analytics key, leave blank to ignore
-  google_analytics_key: UA-10254127-3
+gems: ['jekyll-paginate']
 
-  # Toggle "Postings are my own" disclaimer in footer
-  show_disclaimer: true
+defaults:
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
+    -
+        scope:
+            path: ""
+            type: drafts
+        values:
+            layout: post

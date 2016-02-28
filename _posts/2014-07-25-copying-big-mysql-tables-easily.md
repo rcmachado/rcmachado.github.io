@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Copying Big MySQL Tables Easily
+permalink: /:categories/:year/:month/:day/:title.html
 categories:
 - mysql
 ---
