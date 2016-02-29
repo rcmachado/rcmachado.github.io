@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Copying Big MySQL Tables Easily
+description: A fast and efficient way to copy MySQL tables
 permalink: /:categories/:year/:month/:day/:title.html
 categories:
 - mysql

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Upgrading PostgreSQL using Homebrew
+description: Brew really makes installation of libraries and utilities very fast - but at a cost.
 permalink: /:categories/:year/:month/:day/:title.html
 categories:
 - postgres

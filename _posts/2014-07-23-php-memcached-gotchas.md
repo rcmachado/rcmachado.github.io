@@ -1,6 +1,7 @@
 ---
 layout: post
 title: PHP & Memcached Gotchas
+description: Setting up a memcached session backend for PHP could be more tricky than it sounds.
 permalink: /:categories/:year/:month/:day/:title.html
 categories:
 - php
