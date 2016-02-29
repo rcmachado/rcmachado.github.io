@@ -114,3 +114,6 @@ easiest way to do that is to reinstall it:
 brew uninstall postgis
 brew install postgis
 ```
+
+
+[Homebrew]: http://brew.sh
